@@ -6,7 +6,6 @@ build:
       dbcreate:
   codebase:
     assemble_codebase:
-      replicate:
       checkout_core:
       composer.core_install:
       composer_contrib:

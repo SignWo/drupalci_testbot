@@ -17,10 +17,10 @@ build:
       container_composer:
         halt-on-fail: FALSE
       phplint:
-      phpcs:
+      #phpcs:
         # Start sniffing at the root of D7. This will be modified to the
         # extension's directory for contrib.
-        start_directory:
+        #start_directory:
       eslint:
     testing:
       run_tests_d7:
