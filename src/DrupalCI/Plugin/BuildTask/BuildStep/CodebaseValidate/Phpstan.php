@@ -147,20 +147,20 @@ class Phpstan extends BuildTaskBase implements BuildStepInterface, BuildTaskInte
     $neon_path = $this->build->getAncillaryWorkDirectory() . '/' . $this->pluginDir . '/phpstan.neon';
     $this->io->writeln("<info>Writing $neon_path file</info>");
     $success = file_put_contents($neon_path, "parameters:
-	customRulesetUsed: true
-	reportUnmatchedIgnoredErrors: false
-	# Ignore phpstan-drupal extension's rules.
-	ignoreErrors:
-		- '#\Drupal calls should be avoided in classes, use dependency injection instead#'
-		- '#Plugin definitions cannot be altered.#'
-		- '#Missing cache backend declaration for performance.#'
-		- '#Plugin manager has cache backend specified but does not declare cache tags.#'
-	# Migrate test fixtures kill phpstan, too much PHP.
-	excludes_analyse:
-		- */tests/fixtures/*.php
+  customRulesetUsed: true
+  reportUnmatchedIgnoredErrors: false
+  # Ignore phpstan-drupal extension's rules.
+  ignoreErrors:
+    - '#\Drupal calls should be avoided in classes, use dependency injection instead#'
+    - '#Plugin definitions cannot be altered.#'
+    - '#Missing cache backend declaration for performance.#'
+    - '#Plugin manager has cache backend specified but does not declare cache tags.#'
+  # Migrate test fixtures kill phpstan, too much PHP.
+  excludes_analyse:
+    - */tests/fixtures/*.php
 includes:
-	- $source_dir/vendor/mglaman/phpstan-drupal/extension.neon
-	- $source_dir/vendor/phpstan/phpstan-deprecation-rules/rules.neon");
+  - $source_dir/vendor/mglaman/phpstan-drupal/extension.neon
+  - $source_dir/vendor/phpstan/phpstan-deprecation-rules/rules.neon");
 
     if ($success === FALSE) {
       $this->io->writeln("Unable to write phpstan.neon");
