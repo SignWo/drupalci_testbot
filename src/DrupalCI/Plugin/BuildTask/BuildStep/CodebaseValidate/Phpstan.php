@@ -29,11 +29,11 @@ class Phpstan extends BuildTaskBase implements BuildStepInterface, BuildTaskInte
   protected static $phpstanExecutable = '/vendor/bin/phpstan';
 
   /**
-   * The name of the full report file.
+   * The name of the checkstyle report file.
    *
    * @var string
    */
-  protected $fullReportFile = 'phpstan_results.xml';
+  protected $checkstyleReportFile = 'phpstan_results.xml';
 
   /**
    * {@inheritdoc}
@@ -108,7 +108,7 @@ class Phpstan extends BuildTaskBase implements BuildStepInterface, BuildTaskInte
    * {@inheritdoc}
    */
   public function complete($status) {
-    // @todo
+    $this->adjustCheckstyleFile();
   }
 
   /**
@@ -167,6 +167,28 @@ includes:
     }
     else {
       $this->io->writeln($success . ' bytes written');
+    }
+  }
+
+  /**
+   * Adjust paths and whitespace in the checkstyle report.
+   */
+  protected function adjustCheckstyleFile() {
+    $project_dir = ($this->getProjectType() ? 'core/' : '');
+    $checkstyle_report_filename = $this->pluginWorkDir . '/' . $this->checkstyleReportFile;
+    $this->io->writeln('Adjusting paths and whitespace in report file: ' . $checkstyle_report_filename);
+    if (file_exists($checkstyle_report_filename)) {
+      // The file is probably owned by root and not writable.
+      // @todo remove this when container and host uids have parity.
+      $result = $this->execCommands('sudo chmod 666 ' . $checkstyle_report_filename);
+      $checkstyle_xml = file_get_contents($checkstyle_report_filename);
+      // Adjust file paths based on project paths.
+      if (!empty($project_dir)) {
+        $checkstyle_xml = preg_replace("!<file name=\"!", "<file name=\"" . $project_dir . "/", $checkstyle_xml);
+      }
+      // Save back a trimmed version of the file. This removes the accidental
+      // whitespace from the start of the file that would break XML parsing.
+      file_put_contents($checkstyle_report_filename, trim($checkstyle_xml));
     }
   }
 
