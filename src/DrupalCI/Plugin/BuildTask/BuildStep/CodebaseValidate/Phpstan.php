@@ -92,7 +92,7 @@ class Phpstan extends BuildTaskBase implements BuildStepInterface, BuildTaskInte
     $this->io->writeln('<info>Running PHPStan at ' . $source_dir);
 
     $result = $this->execEnvironmentCommands([
-      'cd ' . $project_dir . ' && sudo -u www-data ' . $source_dir . static::$phpstanExecutable . ' analyse --error-format checkstyle -l 0 -c ' . $work_dir . '/' . $this->pluginDir . '/phpstan.neon . > ' . $work_dir . '/' . $this->pluginDir . '/phpstan_results.xml',
+      'cd ' . $project_dir . ' && sudo -u www-data ' . $source_dir . static::$phpstanExecutable . ' analyse --error-format checkstyle -c ' . $work_dir . '/' . $this->pluginDir . '/phpstan.neon . > ' . $work_dir . '/' . $this->pluginDir . '/phpstan_results.xml',
     ]);
 
     // Save phpstan results for later examination.
@@ -174,7 +174,7 @@ includes:
    * Adjust paths and whitespace in the checkstyle report.
    */
   protected function adjustCheckstyleFile() {
-    $project_dir = ($this->codebase->getProjectType() ? 'core/' : '');
+    $project_dir = ($this->codebase->getProjectType() ? 'core' : '');
     $checkstyle_report_filename = $this->pluginWorkDir . '/' . $this->checkstyleReportFile;
     $this->io->writeln('Adjusting paths and whitespace in report file: ' . $checkstyle_report_filename);
     if (file_exists($checkstyle_report_filename)) {
