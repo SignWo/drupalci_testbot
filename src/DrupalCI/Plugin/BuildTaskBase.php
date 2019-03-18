@@ -168,6 +168,10 @@ abstract class BuildTaskBase implements Injectable, BuildTaskInterface {
       return 0;
     }
     else {
+      if ($statuscode != 0) {
+        $this->io->writeLn("<error>---------------- <options=bold>" . $this->getPluginIdLabel() . "</> Returned " . $statuscode . " ----------------</error>");
+      }
+
       return $statuscode;
     }
   }
