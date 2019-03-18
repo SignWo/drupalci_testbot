@@ -174,7 +174,7 @@ includes:
    * Adjust paths and whitespace in the checkstyle report.
    */
   protected function adjustCheckstyleFile() {
-    $project_dir = ($this->getProjectType() ? 'core/' : '');
+    $project_dir = ($this->codebase->getProjectType() ? 'core/' : '');
     $checkstyle_report_filename = $this->pluginWorkDir . '/' . $this->checkstyleReportFile;
     $this->io->writeln('Adjusting paths and whitespace in report file: ' . $checkstyle_report_filename);
     if (file_exists($checkstyle_report_filename)) {
