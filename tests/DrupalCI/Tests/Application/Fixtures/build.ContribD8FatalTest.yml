@@ -27,7 +27,7 @@ build:
       composer_contrib:
         repositories:
           -
-            repo: 'git://git.drupal.org/project/examples.git'
+            repo: 'https://git.drupal.org/project/examples.git'
             branch: 8.x-1.x#a63b8a96dab95f2dd30e971a4d1c9c94818f4057
             checkout_dir: modules/examples
       fetch:

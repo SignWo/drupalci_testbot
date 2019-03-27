@@ -17,12 +17,12 @@ build:
       checkout_core_d7:
         repositories:
           -
-            repo: 'git://git.drupal.org/project/drupal.git'
+            repo: 'https://git.drupal.org/project/drupal.git'
             branch: 7.x
       composer_contrib_d7:
         repositories:
           -
-            repo: 'git://git.drupal.org/project/examples.git'
+            repo: 'https://git.drupal.org/project/examples.git'
             branch: 7.x-1.x
             checkout_dir: sites/all/modules/examples
       fetch:

@@ -29,7 +29,7 @@ build:
       composer_contrib:
         repositories:
           -
-            repo: 'git://git.drupal.org/project/config_readonly.git'
+            repo: 'https://git.drupal.org/project/config_readonly.git'
             branch: 8.x-1.x
             checkout_dir: modules/config_readonly
       fetch:

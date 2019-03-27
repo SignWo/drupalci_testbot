@@ -20,7 +20,7 @@ build:
       checkout_core:
         repositories:
           -
-            repo: 'git://git.drupal.org/project/drupal.git'
+            repo: 'https://git.drupal.org/project/drupal.git'
             branch: 8.3.x
             commit-hash: 24343f9
       composer.core_install:

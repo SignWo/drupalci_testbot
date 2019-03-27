@@ -28,7 +28,7 @@ build:
       composer_contrib:
         repositories:
           -
-            repo: 'git://git.drupal.org/project/jsonapi.git'
+            repo: 'https://git.drupal.org/project/jsonapi.git'
             branch: 8.x-1.x#b711d24
             checkout_dir: modules/jsonapi
       fetch:

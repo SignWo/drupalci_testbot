@@ -23,7 +23,7 @@ build:
       composer_contrib:
         repositories:
           -
-            repo: 'git://git.drupal.org/project/monolog.git'
+            repo: 'https://git.drupal.org/project/monolog.git'
             branch: 8.x-1.x
             checkout_dir: modules/monolog
       fetch:
