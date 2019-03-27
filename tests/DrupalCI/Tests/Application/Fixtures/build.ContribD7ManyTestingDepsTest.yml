@@ -20,87 +20,87 @@ build:
       composer_contrib_d7:
         repositories:
           -
-            repo: 'git://git.drupal.org/project/metatag.git'
+            repo: 'https://git.drupal.org/project/metatag.git'
             branch: 7.x-1.x
             checkout_dir: sites/all/modules/metatag
           -
-            repo: 'git://git.drupal.org/project/views.git'
+            repo: 'https://git.drupal.org/project/views.git'
             branch: 7.x-3.14
             checkout_dir: sites/all/modules/views
           -
-            repo: 'git://git.drupal.org/project/ctools.git'
+            repo: 'https://git.drupal.org/project/ctools.git'
             branch: 7.x-1.12
             checkout_dir: sites/all/modules/ctools
           -
-            repo: 'git://git.drupal.org/project/panels.git'
+            repo: 'https://git.drupal.org/project/panels.git'
             branch: 7.x-3.8
             checkout_dir: sites/all/modules/panels
           -
-            repo: 'git://git.drupal.org/project/devel.git'
+            repo: 'https://git.drupal.org/project/devel.git'
             branch: 7.x-1.5
             checkout_dir: sites/all/modules/devel
           -
-            repo: 'git://git.drupal.org/project/entity_translation.git'
+            repo: 'https://git.drupal.org/project/entity_translation.git'
             branch: 7.x-1.0-beta5
             checkout_dir: sites/all/modules/entity_translation
           -
-            repo: 'git://git.drupal.org/project/context.git'
+            repo: 'https://git.drupal.org/project/context.git'
             branch: 7.x-3.7
             checkout_dir: sites/all/modules/context
           -
-            repo: 'git://git.drupal.org/project/entity.git'
+            repo: 'https://git.drupal.org/project/entity.git'
             branch: 7.x-1.8
             checkout_dir: sites/all/modules/entity
           -
-            repo: 'git://git.drupal.org/project/file_entity.git'
+            repo: 'https://git.drupal.org/project/file_entity.git'
             branch: 7.x-2.0-beta3
             checkout_dir: sites/all/modules/file_entity
           -
-            repo: 'git://git.drupal.org/project/token.git'
+            repo: 'https://git.drupal.org/project/token.git'
             branch: 7.x-1.6
             checkout_dir: sites/all/modules/token
           -
-            repo: 'git://git.drupal.org/project/i18n.git'
+            repo: 'https://git.drupal.org/project/i18n.git'
             branch: 7.x-1.14
             checkout_dir: sites/all/modules/i18n
           -
-            repo: 'git://git.drupal.org/project/variable.git'
+            repo: 'https://git.drupal.org/project/variable.git'
             branch: 7.x-2.5
             checkout_dir: sites/all/modules/variable
           -
-            repo: 'git://git.drupal.org/project/imagecache_token.git'
+            repo: 'https://git.drupal.org/project/imagecache_token.git'
             branch: 7.x-1.0-rc2
             checkout_dir: sites/all/modules/imagecache_token
           -
-            repo: 'git://git.drupal.org/project/me.git'
+            repo: 'https://git.drupal.org/project/me.git'
             branch: 7.x-1.2
             checkout_dir: sites/all/modules/me
           -
-            repo: 'git://git.drupal.org/project/media.git'
+            repo: 'https://git.drupal.org/project/media.git'
             branch: 7.x-2.0-beta14
             checkout_dir: sites/all/modules/media
           -
-            repo: 'git://git.drupal.org/project/profile2.git'
+            repo: 'https://git.drupal.org/project/profile2.git'
             branch: 7.x-1.3
             checkout_dir: sites/all/modules/profile2
           -
-            repo: 'git://git.drupal.org/project/search_api.git'
+            repo: 'https://git.drupal.org/project/search_api.git'
             branch: 7.x-1.20
             checkout_dir: sites/all/modules/search_api
           -
-            repo: 'git://git.drupal.org/project/workbench_moderation.git'
+            repo: 'https://git.drupal.org/project/workbench_moderation.git'
             branch: 7.x-3.0
             checkout_dir: sites/all/modules/workbench_moderation
           -
-            repo: 'git://git.drupal.org/project/drafty.git'
+            repo: 'https://git.drupal.org/project/drafty.git'
             branch: 7.x-1.0-beta3
             checkout_dir: sites/all/modules/drafty
           -
-            repo: 'git://git.drupal.org/project/field_collection.git'
+            repo: 'https://git.drupal.org/project/field_collection.git'
             branch: 7.x-1.0-beta12
             checkout_dir: sites/all/modules/field_collection
           -
-            repo: 'git://git.drupal.org/project/title.git'
+            repo: 'https://git.drupal.org/project/title.git'
             branch: 7.x-1.0-alpha8
             checkout_dir: sites/all/modules/title
       fetch:

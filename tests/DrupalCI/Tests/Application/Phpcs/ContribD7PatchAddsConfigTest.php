@@ -20,6 +20,7 @@ class ContribD7PatchAddsConfigTest extends DrupalCIFunctionalTestBase {
    */
   protected $dciConfig = [
     'DCI_Fetch=https://www.drupal.org/files/issues/2839170_add_phpcsxmldist_to_examples_7.patch,sites/all/modules/examples',
+    'DCI_CS_CoderVersion=8.2.12',
     'DCI_Patch=2839170_add_phpcsxmldist_to_examples_7.patch,sites/all/modules/examples',
   ];
 

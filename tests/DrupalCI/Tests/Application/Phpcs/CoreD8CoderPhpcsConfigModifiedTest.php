@@ -29,6 +29,7 @@ class CoreD8CoderPhpcsConfigModifiedTest extends DrupalCIFunctionalTestBase {
     'DCI_Fetch=https://www.drupal.org/files/issues/patch_phpcs_xml_dist.patch,.',
     'DCI_Patch=patch_phpcs_xml_dist.patch,.',
     'DCI_CS_SniffOnlyChanged=TRUE',
+    'DCI_CS_CoderVersion=8.2.12',
     'DCI_CS_SniffFailsTest=TRUE',
   ];
 

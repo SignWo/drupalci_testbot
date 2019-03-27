@@ -23,3 +23,4 @@ build:
   assessment:
     validate_codebase:
       phpcs:
+        coder-version: '8.2.12'
