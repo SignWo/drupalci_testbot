@@ -56,14 +56,14 @@ class Phpcs extends BuildTaskBase implements BuildStepInterface, BuildTaskInterf
    *
    * @var string
    */
-  protected static $phpcsExecutable = '/vendor/squizlabs/php_codesniffer/scripts/phpcs';
+  protected static $phpcsExecutable = '/vendor/bin/phpcs';
 
   /**
    * The path where we expect phpcbf to reside.
    *
    * @var string
    */
-  protected static $phpcbfExecutable = '/vendor/squizlabs/php_codesniffer/scripts/phpcbf';
+  protected static $phpcbfExecutable = '/vendor/bin/phpcbf';
 
   /**
    * The name of the checkstyle report file.
@@ -103,7 +103,7 @@ class Phpcs extends BuildTaskBase implements BuildStepInterface, BuildTaskInterf
       // If halt-on-fail is FALSE, then NO circumstance should let phpcs
       // terminate the build.
       'halt-on-fail' => FALSE,
-      'coder-version' => '~8.2.12@stable',
+      'coder-version' => '^8.2@stable',
     ];
   }
 
