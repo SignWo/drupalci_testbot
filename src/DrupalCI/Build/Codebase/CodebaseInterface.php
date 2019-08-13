@@ -6,6 +6,11 @@ interface CodebaseInterface {
 
   public function addPatch(PatchInterface $patch);
 
+  /**
+   * Get a list of files modified by the patch.
+   *
+   * @return string[]
+   */
   public function getModifiedFiles();
 
   /**

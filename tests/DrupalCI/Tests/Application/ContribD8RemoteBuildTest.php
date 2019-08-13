@@ -3,13 +3,9 @@
 namespace DrupalCI\Tests\Application;
 
 use DrupalCI\Tests\DrupalCIFunctionalTestBase;
-use Symfony\Component\Console\Tester\ApplicationTester;
 
 /**
- * Test what happens a contrib module has no tests.
- *
- * This test depends on the drupalci_d8_no_tests module which you can find here:
- * https://www.drupal.org/sandbox/mile23/2683655
+ * Tests that a remote build definition can be used to run a test build.
  *
  * NOTE: This test assumes you have followed the setup instructions in TESTING.md
  *
@@ -18,9 +14,9 @@ use Symfony\Component\Console\Tester\ApplicationTester;
  * @see TESTING.md
  *
  */
-class CoreD7SqlLiteRemoteBuildTest extends DrupalCIFunctionalTestBase {
+class ContribD8RemoteBuildTest extends DrupalCIFunctionalTestBase {
 
-  public function testCoreD7SqlLiteRemoteBuildTest() {
+  public function testContribD8RemoteBuild() {
 
     $options = ['interactive' => FALSE];
     $this->app_tester->run([

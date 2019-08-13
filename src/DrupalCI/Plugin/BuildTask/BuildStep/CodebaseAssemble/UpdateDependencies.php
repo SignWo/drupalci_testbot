@@ -21,7 +21,11 @@ class UpdateDependencies extends BuildTaskBase implements BuildStepInterface, Bu
 
   }
 
-  /* @var \DrupalCI\Build\Codebase\CodebaseInterface */
+  /**
+   * Codebase.
+   *
+   * @var \DrupalCI\Build\Codebase\CodebaseInterface
+   */
   protected $codebase;
 
   /**
@@ -36,10 +40,17 @@ class UpdateDependencies extends BuildTaskBase implements BuildStepInterface, Bu
     // Get the modified files from the codebase.
     // Anything that has a change to the composer.json or .info/.info.yml should
     // be detected.
-    // If composer.json is modified, remove the project, validate the composer
-    // json, move it to ancillary source directory, make a branch, commit it,
-    // add it to the core composer.json as an additional repo, and composer
-    // require the new version again.
+    // For core:
+    // - If root composer.lock is changed, reinstall via Composer.
+    // - If root composer.json is changed, but composer.lock is not, then it
+    //   could be that the patch changed autoload/autoload-dev. Changes there
+    //   are not reflected in the lock file. So we should have Composer dump
+    //   autoload.
+    // For contrib:
+    // - If composer.json is modified, remove the project, validate the composer
+    //   json, move it to ancillary source directory, make a branch, commit it,
+    //   add it to the core composer.json as an additional repo, and composer
+    //   require the new version again.
     if ('TRUE' === strtoupper(getenv('DCI_Debug'))) {
       $verbose = ' -vvv';
       $progress = '';
@@ -138,8 +149,18 @@ sudo -u www-data git config --global user.name \"The Testbot\" && sudo -u www-da
 
       $this->io->writeln("Composer Command: $cmd");
       $result = $this->execRequiredEnvironmentCommands($cmd, 'Core composer reinstall failure');
-
     }
+    // Root composer.lock file is not modified, but let's still check the root
+    // composer.json.
+    elseif (in_array('composer.json', $modified_files)) {
+      $this->io->writeln("Root composer.json modified but lock file unchanged. Dumping autoload.");
+
+      $cmd = "sudo -u www-data /usr/local/bin/composer${verbose} dumpautoload --profile --no-interaction --working-dir " . $source_dir;
+
+      $this->io->writeln("Composer Command: $cmd");
+      $result = $this->execRequiredEnvironmentCommands($cmd, 'Core composer dumpautoload failure');
+    }
+
   }
 
   /**
