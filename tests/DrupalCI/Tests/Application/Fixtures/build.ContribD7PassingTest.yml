@@ -26,7 +26,7 @@ build:
       composer_contrib_d7:
         repositories: {  }
         project: forena
-        branch: 7.x-4.x
+        branch: 7.x-4.x#a3cfbe52e1ac2a2f143ba992d40a5657d2e32214
       fetch:
         files: {  }
       patch:
