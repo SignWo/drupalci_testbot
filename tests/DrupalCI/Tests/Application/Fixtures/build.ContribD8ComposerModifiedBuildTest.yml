@@ -24,7 +24,7 @@ build:
         repositories:
           -
             repo: 'https://git.drupal.org/project/monolog.git'
-            branch: 8.x-1.x
+            branch: 8.x-1.x#114529e818e20fd7490aa3aad5a8fee46c5bd3c0
             checkout_dir: modules/monolog
       fetch:
         files:
