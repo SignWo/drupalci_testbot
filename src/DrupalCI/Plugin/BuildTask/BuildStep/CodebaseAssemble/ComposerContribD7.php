@@ -71,4 +71,12 @@ class ComposerContribD7 extends ComposerContrib implements BuildStepInterface, B
     }
   }
 
+  /**
+   * @inheritDoc
+   */
+  protected function updateCoreLockfile(string $source_dir): void {
+    // Noop for d7.
+  }
+
+
 }
