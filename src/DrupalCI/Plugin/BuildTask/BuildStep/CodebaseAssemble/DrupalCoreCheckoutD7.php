@@ -22,4 +22,13 @@ class DrupalCoreCheckoutD7 extends DrupalCoreCheckout implements BuildStepInterf
     return $extension_paths;
   }
 
+  /**
+   * @param string $source_dir
+   *
+   * @return void
+   */
+  protected function updateCoreLockfile(string $source_dir): void {
+    // Do not do anything for d7.
+  }
+
 }

@@ -57,6 +57,8 @@ class DrupalCoreCheckout extends Checkout implements BuildStepInterface, BuildTa
     $commands[] = "chown -fR www-data:www-data {$this->environment->getExecContainerSourceDir()}";
     $result = $this->execEnvironmentCommands($commands);
 
+    $this->updateCoreLockfile($this->environment->getExecContainerSourceDir());
+
     $this->codebase->setExtensionPaths($this->discoverExentionPaths());
   }
 
@@ -97,6 +99,20 @@ class DrupalCoreCheckout extends Checkout implements BuildStepInterface, BuildTa
     }
     return $extension_paths;
 
+  }
+
+  /**
+   * @param string $source_dir
+   *
+   * @return void
+   * @throws \DrupalCI\Plugin\BuildTask\BuildTaskException
+   */
+  protected function updateCoreLockfile(string $source_dir): void {
+    if (!preg_match('/.*\.x$/', $this->configuration['repositories'][0]['branch'])) {
+      $cmd = "sudo COMPOSER_ROOT_VERSION={$this->configuration['repositories'][0]['branch']} -u www-data /usr/local/bin/composer -vvv update drupal/core* --working-dir ${source_dir}";
+      $this->io->writeln("Ensuring Core lockfile is updated");
+      $this->execRequiredEnvironmentCommands($cmd, 'Composer config failure');
+    }
   }
 
 }

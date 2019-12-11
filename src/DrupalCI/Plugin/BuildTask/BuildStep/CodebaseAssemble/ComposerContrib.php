@@ -100,8 +100,6 @@ class ComposerContrib extends BuildTaskBase implements BuildStepInterface, Build
     $this->io->writeln("Adding packages.drupal.org as composer repository");
     $this->execRequiredEnvironmentCommands($cmd, 'Composer config failure');
 
-    $this->updateCoreLockfile($source_dir);
-
 
     $cmd = "sudo -u www-data /usr/local/bin/composer ${verbose} require drupal/" . $project . " " . $composer_branch . " --prefer-source --prefer-stable${progress} --no-suggest --no-interaction --working-dir " . $source_dir;
 
@@ -118,18 +116,6 @@ class ComposerContrib extends BuildTaskBase implements BuildStepInterface, Build
       $this->execRequiredEnvironmentCommands($cmd, 'Composer require failure');
 
     }
-  }
-
-  /**
-   * @param string $source_dir
-   *
-   * @return void
-   * @throws \DrupalCI\Plugin\BuildTask\BuildTaskException
-   */
-  protected function updateCoreLockfile(string $source_dir): void {
-    $cmd = "sudo COMPOSER_ROOT_VERSION=8.8.0 -u www-data /usr/local/bin/composer -vvv update drupal/core* --working-dir ${source_dir}";
-    $this->io->writeln("Ensuring Core lockfile is updated");
-    $this->execRequiredEnvironmentCommands($cmd, 'Composer config failure');
   }
 
 }
