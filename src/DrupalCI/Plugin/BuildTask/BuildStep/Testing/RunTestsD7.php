@@ -3,7 +3,6 @@
 namespace DrupalCI\Plugin\BuildTask\BuildStep\Testing;
 
 use DrupalCI\Build\BuildInterface;
-use DrupalCI\Build\Environment\Environment;
 use Pimple\Container;
 
 /**
