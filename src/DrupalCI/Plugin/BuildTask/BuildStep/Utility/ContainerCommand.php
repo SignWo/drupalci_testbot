@@ -34,8 +34,10 @@ class ContainerCommand extends Command implements BuildStepInterface, BuildTaskI
 
     foreach ($this->configuration['artifacts'] as $artifact) {
       // Save any defined artifacts at the end
-      $artifact['source'] = str_replace('${SOURCE_DIR}', $this->environment->getExecContainerSourceDir(), $artifact['source']);
-      $artifact['source'] = str_replace('${PROJECT_DIR}', $this->codebase->getProjectSourceDirectory(), $artifact['source']);
+      $source_dir = $this->environment->getExecContainerSourceDir();
+      $artifact['source'] = str_replace('${SOURCE_DIR}', $source_dir, $artifact['source']);
+      $project_dir = $source_dir . '/' . $this->codebase->getProjectSourceDirectory(FALSE);
+      $artifact['source'] = str_replace('${PROJECT_DIR}', $project_dir, $artifact['source']);
       $this->saveContainerArtifact($artifact['source'], $artifact['destination']);
     }
 
@@ -55,8 +57,10 @@ class ContainerCommand extends Command implements BuildStepInterface, BuildTaskI
     $this->io->writeln('<info>Container command.</info>');
 
     // Set some environment variables for these executions.
-    $this->command_environment[] = "SOURCE_DIR={$this->environment->getExecContainerSourceDir()}";
-    $this->command_environment[] = "PROJECT_DIR={$this->codebase->getProjectSourceDirectory()}";
+    $source_dir = $this->environment->getExecContainerSourceDir();
+    $this->command_environment[] = "SOURCE_DIR={$source_dir}";
+    $project_dir = $source_dir . '/' . $this->codebase->getProjectSourceDirectory(FALSE);
+    $this->command_environment[] = "PROJECT_DIR={$project_dir}";
 
     if ($die_on_fail) {
       $result = $this->execRequiredEnvironmentCommands($commands, 'Custom Commands Failed');
